@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import "./App.css";
 import UserList from "./components/UserList";
 import UserProfile from "./components/UserProfile";
+import NotFound from "./NotFound";
 
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 
@@ -12,7 +13,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="" element={<UserList />} />
-        <Route path="/user:id" element={<UserProfile/>} />
+        <Route path="/:id" element={<UserProfile/>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
     // <>

@@ -83,3 +83,27 @@ tr{
 .flag{
   width: 86px;
 }
+
+.profile-container {
+  width: 80%;
+  margin: auto;
+}
+
+.country-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.country-flag {
+  width: 100px;
+  height: auto;
+}
+
+.country-info h2, .country-info h3 {
+  margin: 10px 0;
+}

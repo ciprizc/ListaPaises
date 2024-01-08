@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useMemo } from "react";
 import "../index.css";
 
 import { Link } from "react-router-dom";
-
+import Table from "./Table";
 interface User {
   id: {
     value: string;
@@ -103,48 +103,7 @@ export default function UserList() {
           setFilterCountry(e.target.value);
         }}
       />
-      <table>
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th onClick={() => toogleSort(SortBy.NAME)}>Name</th>
-            <th onClick={() => toogleSort(SortBy.SURNAME)}>Surname</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedcountries.map((country, index) => {
-            const backgroundColor = index % 2 === 0 ? "#333" : "#555";
-            const color = showColor ? backgroundColor : "transparent";
-            
-
-            return (
-              <tr key={country.cioc} style={{ backgroundColor: color }}>
-                <td>
-                  <Link to={`/user/${country.cca2}`}>
-                    <img src={country.flags.png} alt="" className="flag"/>
-                  </Link>
-                </td>
-                <td>{country.name.common}</td>
-                <td>{country.name.official}</td>
-                {/* <td>{user.location.country}</td> */}
-                <td>
-                  {" "}
-                  <button
-                    onClick={() => {
-                      const newcountries = sortedcountries.filter(
-                        (u) => u.name.common !== country.name.common
-                      );
-                      setcountries(newcountries);
-                    }}
-                  >
-                    Borrar
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+     <Table sortedcountries={sortedcountries} toogleSort={toogleSort} showColor={showColor} setcountries={setcountries} />
     </>
   );
 }
