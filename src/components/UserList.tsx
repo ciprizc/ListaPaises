@@ -42,6 +42,7 @@ export default function UserList() {
         originalcountries.current = res;
       })
       .catch((err) => console.log(err));
+
   }, []);
 
 
@@ -57,7 +58,6 @@ export default function UserList() {
     if (sorting === value) {
       setSorting(SortBy.NONE);
     }
-    console.log(sorting);
   };
 
   const filtercountries = useMemo(() => {

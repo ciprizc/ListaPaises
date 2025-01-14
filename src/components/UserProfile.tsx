@@ -10,9 +10,16 @@ export default function UserProfile() {
     fetch("https://restcountries.com/v3.1/alpha?codes=" + id)
       .then(async (res) => await res.json())
       .then((res) => {
-        setCountry(res);
+        console.log(res)
+        if(res.message==='Bad Request'){
+          window.location.href='/404'
+        }else{
+          setCountry(res);
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>{
+        console.log(err)
+      } );
   }, []);
 
   return (

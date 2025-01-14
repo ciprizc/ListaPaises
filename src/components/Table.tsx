@@ -15,6 +15,8 @@ export enum SortBy {
 
   export default function Table({ sortedcountries, toogleSort, showColor, setcountries }: TableProps) {
     return (
+    <>
+    <h1>Table</h1>
     <table>
       <thead>
         <tr>
@@ -38,7 +40,7 @@ export enum SortBy {
                 </td>
                 <td>{country.name.common}</td>
                 <td>{country.name.official}</td>
-                {/* <td>{user.location.country}</td> */}
+                {/* <td>{country.location.country}</td> */}
                 <td>
                   {" "}
                   <button
@@ -57,5 +59,6 @@ export enum SortBy {
           })}
         </tbody>
     </table>
+    </>
   );
 };
