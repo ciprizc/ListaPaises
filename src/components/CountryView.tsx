@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
 
-export default function UserProfile() {
+export default function CountryView() {
   const params = useParams();
   const [id, setId] = useState(params.id);
   const [country, setCountry] = useState<any[]>([]);

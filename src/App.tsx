@@ -1,26 +1,28 @@
-import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
-import UserList from "./components/UserList";
-import UserProfile from "./components/UserProfile";
+
 import NotFound from "./NotFound";
-
-import { BrowserRouter,Routes,Route } from "react-router-dom";
-
+import CountriesList from "./components/CountriesList";
+import CountryView from "./components/CountryView";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="" element={<UserList />} />
-        <Route path="/:id" element={<UserProfile/>} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
-    // <>
-    //   <UserList/>
-    // </>
-  );
+    const queryClient = new QueryClient();
+
+    return (
+        <QueryClientProvider client={queryClient}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="" element={<CountriesList />} />
+                    <Route path="/:id" element={<CountryView />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </BrowserRouter>
+        </QueryClientProvider>
+        // <>
+        //   <UserList/>
+        // </>
+    );
 }
 
 export default App;
