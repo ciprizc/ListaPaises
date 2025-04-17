@@ -1,5 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+/**
+ * Props for the Table component
+ * @interface TableProps
+ * @property {any[]} sortedcountries - Array of country objects to display in the table
+ * @property {function} toogleSort - Function to toggle sorting of the table
+ * @property {boolean} showColor - Whether to show alternating row colors
+ * @property {React.Dispatch<React.SetStateAction<any[]>>} setcountries - Function to update the countries array
+ */
 interface TableProps {
   sortedcountries: any[];
   toogleSort: (sortBy: SortBy) => void;
@@ -7,13 +16,26 @@ interface TableProps {
   setcountries: React.Dispatch<React.SetStateAction<any[]>>;
 }
 
+/**
+ * Enum for table sorting options
+ * @enum {string}
+ */
 export enum SortBy {
     NONE = "none",
     NAME = "name",
     SURNAME = "official",
   }
 
-  export default function Table({ sortedcountries, toogleSort, showColor, setcountries }: TableProps) {
+/**
+ * Table component that displays country information in a sortable table
+ * @param {TableProps} props - The component props
+ * @param {any[]} props.sortedcountries - Array of country objects to display
+ * @param {function} props.toogleSort - Function to toggle sorting of the table
+ * @param {boolean} props.showColor - Whether to show alternating row colors
+ * @param {React.Dispatch<React.SetStateAction<any[]>>} props.setcountries - Function to update the countries array
+ * @returns {JSX.Element} The rendered table
+ */
+export default function Table({ sortedcountries, toogleSort, showColor, setcountries }: TableProps) {
     return (
     <>
     <h1>Table</h1>

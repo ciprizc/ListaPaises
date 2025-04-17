@@ -19,9 +19,6 @@ function App() {
                 </Routes>
             </BrowserRouter>
         </QueryClientProvider>
-        // <>
-        //   <UserList/>
-        // </>
     );
 }
 
