@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useEffect,useState } from "react";
+import { useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
 import NotFound from "../NotFound";
 
@@ -11,14 +11,13 @@ import NotFound from "../NotFound";
 export default function CountryView() {
   const params = useParams();
   const [country, setCountry] = useState<any[]>([]);
-
   const id = params.id as string;
   
   /**
    * Fetches country data based on the country code from URL parameters
    */
   const countryData = useQuery({
-    queryKey: ["country"],
+    queryKey: ["country", id],
     queryFn: async () => {
       const res = await fetch("https://restcountries.com/v3.1/alpha?codes=" + id);
       if (!res.ok) {
@@ -26,6 +25,7 @@ export default function CountryView() {
       }
       return res.json();
     },
+    
   })
   useEffect(() => {
     if (countryData.data) {
@@ -35,6 +35,7 @@ export default function CountryView() {
 
   if (countryData.isLoading) return <h1>Loading...</h1>;
   if (countryData.error) return <NotFound />;
+
 
   return (
     <div className="profile-container">
